@@ -1,6 +1,13 @@
 import './App.css'
+import TextField from './ui/text-field'
+import { useState } from 'react'
 
 function App() {
+  const [values, setValues] = useState({
+    name: '',
+    email: '',
+  })
+  const { name, email } = values
   return (
     <div className='App'>
       <form>
@@ -13,21 +20,33 @@ function App() {
         </ul>
 
         <div>
-          <hw>Contact Info</hw>
+          <h2>Contact Info</h2>
           <div>
-            <div>
-              <div>
-                <label>Your name</label>:
-              </div>
-              <input type='text' id='fullname' placeholder='Jean Luc Picard' />
-            </div>
+            <TextField
+              type='text'
+              label='Your full name$$'
+              placeholder='Jean Luc Picard'
+              onChange={(name) =>
+                setValues((prev) => ({
+                  ...prev,
+                  name,
+                }))
+              }
+              value={name}
+            />
 
-            <div>
-              <div>
-                <label>Email</label>:
-              </div>
-              <input type='text' id='email' placeholder='abc@email.com' />
-            </div>
+            <TextField
+              type='text'
+              label='Email'
+              placeholder='jean@StarTrek.com'
+              onChange={(email) =>
+                setValues((prev) => ({
+                  ...prev,
+                  email,
+                }))
+              }
+              value={email}
+            />
 
             <div>
               <div>
@@ -39,7 +58,7 @@ function App() {
         </div>
 
         <div>
-          <hw>Shipping Info</hw>
+          <h2>Shipping Info</h2>
           <div>
             <div>
               <div>
